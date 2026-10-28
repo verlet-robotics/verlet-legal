@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verlet Ego Privacy Policy | Verlet Robotics</title>
+<meta name="description" content="How Verlet collects, uses, shares and protects data in the Verlet Ego app and recording platform.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f4f4f6; --fg: #1c1c1e; --muted: #5f5f66; --faint: #8e8e93;
+    --card: #ffffff; --line: rgba(0,0,0,.10); --soft: #e8e8ec;
+    --hl: #d64d7a; --hl-text: #b53a65; --hl-soft: rgba(214,77,122,.09);
+        --radius: 8px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0a0c; --fg: rgba(255,255,255,.92); --muted: rgba(255,255,255,.62); --faint: rgba(255,255,255,.45);
+      --card: rgba(22,22,26,.85); --line: rgba(255,255,255,.10); --soft: rgba(255,255,255,.08);
+      --hl: #e06090; --hl-text: #f088ac; --hl-soft: rgba(224,96,144,.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    position: relative; min-height: 100vh;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(ellipse at 0% 0%, var(--hl-soft) 0%, transparent 60%);
+  }
+  a { color: var(--hl-text); text-underline-offset: .18em; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--hl); outline-offset: 3px; border-radius: 4px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--card); padding: .6rem 1rem; z-index: 10; border: 1px solid var(--line); }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  header.bar { border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 5; }
+  .bar-in { max-width: 72rem; margin: 0 auto; padding: .8rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .brand { display: flex; align-items: center; gap: .6rem; color: var(--fg); text-decoration: none; }
+  .brand svg { width: 22px; height: 22px; flex: none; }
+  .brand span { font-family: ui-serif, Georgia, "Times New Roman", serif; font-size: 1.15rem; letter-spacing: .01em; }
+  .bar-doc { color: var(--muted); font-size: .85rem; }
+
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem 4rem; }
+
+  .hero { padding: 3rem 0 2rem; border-bottom: 1px solid var(--line); }
+  .eyebrow { color: var(--hl-text); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 .6rem; }
+  h1 { font-family: ui-serif, Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.12; margin: 0 0 1rem; letter-spacing: -.01em; }
+  .intro { font-size: 1.12rem; color: var(--muted); max-width: 44rem; margin: 0 0 1.5rem; }
+  dl.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .9rem 1.5rem; margin: 0; }
+  dl.facts div { border-left: 2px solid var(--hl); padding-left: .8rem; }
+  dl.facts dt { color: var(--faint); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+  dl.facts dd { margin: .1rem 0 0; font-size: .95rem; }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; margin-top: 2rem; }
+  @media (min-width: 62rem) { .layout { grid-template-columns: 15rem minmax(0, 1fr); } }
+  aside nav { position: sticky; top: 5rem; }
+  aside h2 { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin: 0 0 .6rem; border: 0; padding: 0; }
+  aside ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  aside li { counter-increment: toc; margin: 0; }
+  aside li a { display: block; padding: .28rem .6rem; border-left: 2px solid var(--line); color: var(--muted); text-decoration: none; font-size: .9rem; }
+  aside li a::before { content: counter(toc) ". "; color: var(--faint); }
+  aside li a:hover { color: var(--fg); border-left-color: var(--hl); }
+  @media (max-width: 61.99rem) { aside nav { position: static; } aside ol { columns: 2; column-gap: 1.5rem; } aside li { break-inside: avoid; } }
+  @media (max-width: 36rem) { aside ol { columns: 1; } }
+
+  article section { padding-top: 2rem; margin-bottom: .5rem; }
+  article h2 { font-family: ui-serif, Georgia, "Times New Roman", serif; font-weight: 500; font-size: 1.55rem; line-height: 1.25; margin: 0 0 .6rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+  article section:first-of-type h2 { border-top: 0; padding-top: 0; }
+  article h3 { font-size: 1rem; margin: 1.5rem 0 .2rem; }
+  article p, article li { margin: .55rem 0; }
+  article ul { padding-left: 1.25rem; }
+  article li::marker { color: var(--hl); }
+
+  .summary { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.3rem; margin: 0 0 1rem; }
+  .summary h2 { font-family: inherit; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--hl-text); border: 0; padding: 0; margin: 0 0 .4rem; }
+  .summary ul { margin: 0; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); margin: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: .93rem; min-width: 34rem; }
+  caption { text-align: left; padding: .8rem 1rem; color: var(--muted); font-size: .85rem; border-bottom: 1px solid var(--line); }
+  th, td { text-align: left; vertical-align: top; padding: .7rem 1rem; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  th { color: var(--faint); font-weight: 600; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; background: var(--soft); }
+
+  footer.site { border-top: 1px solid var(--line); margin-top: 3rem; padding: 2rem 0 0; color: var(--muted); font-size: .88rem; display: grid; gap: .3rem; }
+  footer.site strong { color: var(--fg); font-family: ui-serif, Georgia, serif; font-weight: 500; font-size: 1rem; }
+
+  @media print {
+    :root { --bg: #fff; --fg: #000; --muted: #333; --faint: #555; --card: #fff; --line: #bbb; --soft: #eee; --hl-text: #000; }
+    body::before, header.bar, aside { display: none !important; }
+    .layout { display: block; } .wrap { padding: 0; max-width: none; }
+    a { color: #000; } article h2 { break-after: avoid; } .table-wrap { break-inside: avoid; overflow: visible; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to the policy</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#top" aria-label="Verlet Robotics">
+      <svg viewBox="0 0 500 500" aria-hidden="true"><path fill="currentColor" d="M 435.417 92.005 C 439.102 91.548 442.946 91.492 446.623 92.028 C 456.638 93.754 465.69 100.693 469.807 109.999 C 475.136 121.21 473.203 135.184 465.046 144.586 C 457.024 154.063 443.491 158.131 431.672 154.343 C 414.068 180.84 394.204 205.954 373.014 229.678 C 354.432 250.343 334.66 269.899 313.742 288.194 C 303.401 297.507 292.416 306.111 281.567 314.822 C 283.386 322.561 283.273 330.469 279.838 337.786 C 274.963 348.734 263.909 356.338 251.923 356.729 C 244.228 357.046 236.593 354.406 230.612 349.613 C 211.029 361.761 190.62 372.593 169.672 382.192 C 149.558 391.409 129.028 399.065 107.512 404.255 C 95.601 407.025 82.97 409.315 70.726 409.085 C 62.341 409.079 54.062 407.678 46.367 404.334 C 39.354 401.228 33.031 396.467 29.362 389.608 C 24.813 381.578 24.252 372.293 25.48 363.281 C 27.451 349.45 33.987 336.568 41.174 324.738 C 53.615 304.732 69.407 286.658 85.669 269.682 C 97.08 257.868 109.096 246.667 121.416 235.804 C 118.656 229.283 118.603 220.966 120.84 214.261 C 123.395 206.402 129.217 199.747 136.602 196.058 C 148.034 190.409 162.326 191.546 171.977 200.06 C 182.833 209.333 186.162 225.693 179.74 238.529 C 186.586 245.79 193.804 252.708 200.688 259.93 C 212.386 272.172 224.236 284.253 236.032 296.396 C 246.457 291.069 259.755 291.764 269.224 298.717 C 281.051 289.199 292.81 279.628 304.106 269.483 C 329.36 246.914 353.06 222.541 374.652 196.441 C 388.905 179.171 402.461 161.275 414.773 142.566 C 407.684 133.313 406.532 120.225 411.748 109.76 C 416.122 100.437 425.273 93.608 435.417 92.005 Z M 132.94 253.096 C 121.226 263.614 109.528 274.253 98.672 285.654 C 88.315 296.136 78.846 307.508 69.87 319.18 C 61.576 330.425 53.19 342.907 48.429 356.098 C 46.39 362.339 44.449 369.931 46.367 376.373 C 47.633 380.772 51.09 383.811 55.177 385.588 C 62.94 389.009 72.068 388.912 80.4 388.311 C 106.67 385.525 133.167 375.846 157.299 365.299 C 178.535 355.775 199.156 344.827 219.209 333.018 C 217.693 325.603 218.277 317.973 221.468 311.044 C 202.538 291.9 183.819 272.459 165.032 253.17 C 155.487 258.106 143.546 257.169 134.456 251.762 C 133.941 252.204 133.44 252.646 132.94 253.096 Z"/></svg>
+      <span>Verlet Robotics</span>
+    </a>
+    <span class="bar-doc">Ego &middot; Privacy Policy</span>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+
+  <section class="hero">
+    <p class="eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="intro">
+      Verlet Ego is the mobile app our operators use to record, check and upload short videos of everyday tasks. We use those
+      recordings to build datasets that teach robots how people use their hands. This policy explains what we collect, why,
+      who can see it, how long we keep it, and what choices you have.
+    </p>
+    <dl class="facts">
+      <div><dt>Product</dt><dd>Verlet Ego (iOS and Android)</dd></div>
+      <div><dt>Operated by</dt><dd>Verlet Robotics Rwanda LTD</dd></div>
+      <div><dt>Effective</dt><dd>28 October 2026</dd></div>
+      <div><dt>Last updated</dt><dd>28 October 2026</dd></div>
+    </dl>
+  </section>
+
+  <div class="layout">
+    <aside>
+      <nav aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#who">Who we are</a></li>
+          <li><a href="#what">What we collect</a></li>
+          <li><a href="#permissions">Permissions</a></li>
+          <li><a href="#diagnostics">Diagnostic logs</a></li>
+          <li><a href="#use">How we use data</a></li>
+          <li><a href="#share">Who we share it with</a></li>
+          <li><a href="#tracking">Advertising and tracking</a></li>
+          <li><a href="#others">What recordings may show</a></li>
+          <li><a href="#retention">How long we keep it</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#rights">Your choices and rights</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <article id="content">
+
+      <div class="summary">
+        <h2>In short</h2>
+        <ul>
+          <li>We collect your account details, the videos you record, motion data from the phone, and technical data about how the app runs.</li>
+          <li>Operators are told not to record their own face. Other people or reflections can appear in a recording by accident.</li>
+          <li>Our clients receive datasets built from recordings. They identify you only by an operator identifier, not by name or contact details.</li>
+          <li>The app has no advertising and no tracking, and we do not sell personal data.</li>
+          <li>We disable accounts when work ends. We do not currently delete them.</li>
+        </ul>
+      </div>
+
+      <section id="who">
+        <h2>1. Who we are</h2>
+        <p>
+          The Verlet Ego app and the platform behind it are operated by <strong>Verlet Robotics Rwanda LTD</strong>, KG 14 Ave, Village
+          Ntora, Cell Ruhango, Sector Gisozi, District Gasabo, Kigali City, Rwanda ("Verlet", "we", "us"). Verlet Robotics Rwanda LTD is
+          part of the Verlet group of companies, whose parent company is Verlet, Inc.
+        </p>
+        <p>
+          Accounts are issued to the people Verlet works with, called "operators" in this policy, after they have completed Verlet's
+          training for Ego and are registered as having passed it. They then sign a contract with Verlet and start working. You cannot use
+          the app without an account.
+        </p>
+      </section>
+
+      <section id="what">
+        <h2>2. What we collect</h2>
+
+        <h3>Your account</h3>
+        <ul>
+          <li>Your name as shown in the app, your email address, your role, and an internal user identifier. Your password is stored only as a salted, one-way hash, so nobody at Verlet can read it.</li>
+        </ul>
+
+        <h3>Recordings and what comes with them</h3>
+        <ul>
+          <li><strong>Videos</strong> recorded with the phone camera and with any wrist cameras paired to the app, with details such as length, size, resolution and frame rate.</li>
+          <li><strong>Motion and camera data</strong> recorded with each video, such as accelerometer and gyroscope readings and the camera's calibration, used to work out how the camera moved.</li>
+          <li><strong>Hand-position data</strong> that software derives from the videos, showing where hands and fingers are and how they move.</li>
+          <li><strong>Task information:</strong> which task was recorded and when, and quality checks run on the recording.</li>
+          <li>Anything that is in view of the camera, which can include other people, their faces, and reflections in mirrors or windows (section 8).</li>
+          <li>The app and the cameras it works with do not record audio.</li>
+        </ul>
+
+        <h3>Technical data</h3>
+        <ul>
+          <li><strong>Identifiers:</strong> a random identifier created when the app is installed, the app version, and the phone type and operating system.</li>
+          <li><strong>Usage and performance data:</strong> whether sign-in, uploads and other requests succeeded or failed, how long they took, and whether the network was available.</li>
+          <li><strong>Error information</strong> when the app fails: the kind of error and where in the app it happened, never the error message or your data.</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <caption>The data we collect, by category</caption>
+            <thead><tr><th scope="col">Category</th><th scope="col">Examples</th><th scope="col">Linked to you</th><th scope="col">Used for</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Contact info</th><td>Name, email address</td><td>Yes</td><td>Running your account and signing you in</td></tr>
+              <tr><th scope="row">User content</th><td>Videos you record and upload</td><td>Yes, through your operator identifier</td><td>Delivering the service; building datasets (section 5)</td></tr>
+              <tr><th scope="row">Body: hands</th><td>Hand position derived from your videos</td><td>Yes, through your operator identifier</td><td>Delivering the service; building datasets (section 5)</td></tr>
+              <tr><th scope="row">Identifiers</th><td>User identifier, installation identifier</td><td>Yes</td><td>Running the app, security, fixing problems</td></tr>
+              <tr><th scope="row">Usage data</th><td>Which actions succeeded or failed</td><td>Yes</td><td>Running the app, fixing problems</td></tr>
+              <tr><th scope="row">Diagnostics</th><td>Timings, error classes, app version</td><td>Yes</td><td>Fixing problems, keeping the service reliable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="permissions">
+        <h2>3. Permissions the app asks for</h2>
+        <ul>
+          <li><strong>Camera:</strong> to scan station codes and to record.</li>
+          <li><strong>Motion sensors:</strong> to record how the phone moves during a recording.</li>
+          <li><strong>Bluetooth:</strong> to find and control your wrist cameras. Their video travels over Wi-Fi, not Bluetooth.</li>
+          <li><strong>Local network:</strong> to talk to recording stations on the same network.</li>
+        </ul>
+        <p>The app does <strong>not</strong> ask for your location, contacts, photo library or microphone.</p>
+      </section>
+
+      <section id="diagnostics">
+        <h2>4. Diagnostic logs</h2>
+        <p>
+          The app keeps a technical log on your phone: when the app started, whether the network was available, and whether sign-in,
+          requests and uploads succeeded or failed, each with the time. Each entry carries your internal user identifier and a random
+          installation identifier. The log does <strong>not</strong> contain your password, email address, name, the contents or file
+          names of your recordings, or any sign-in token. The app keeps a limited amount, a few megabytes for about a week, and removes
+          older entries automatically.
+        </p>
+        <p>
+          We use the log to find and fix problems such as an upload that fails. It may be sent to our servers and to our monitoring
+          service, Grafana, for that purpose, and is kept there only as long as it is needed to find and fix problems.
+        </p>
+      </section>
+
+      <section id="use">
+        <h2>5. How we use data</h2>
+        <ul>
+          <li>To create and secure your account and let you sign in.</li>
+          <li>To receive, store, check and process your recordings, and to tell you whether they were accepted.</li>
+          <li>To build datasets from recordings and the data derived from them, and to give those datasets to our clients, who use them to train and evaluate software that controls robots (section 6).</li>
+          <li>To find and fix problems, protect the service from misuse, and keep it reliable.</li>
+          <li>To meet our legal obligations.</li>
+        </ul>
+        <p>
+          Where the law requires a legal basis for using personal data, ours are: performing our agreement with you, our legitimate interest
+          in running and improving the service, and your consent where we ask for it.
+        </p>
+      </section>
+
+      <section id="share">
+        <h2>6. Who we share it with</h2>
+        <p>We do not sell your personal data.</p>
+        <ul>
+          <li><strong>Service providers</strong> that run our systems for us: <strong>Cloudflare</strong>, which stores recordings and data and delivers the service, <strong>Grafana</strong> (Grafana Cloud), which receives monitoring and diagnostic data, and other infrastructure and error-monitoring providers. They may use the data only to provide their service to us.</li>
+          <li><strong>Our clients</strong>, who receive datasets built from recordings. A dataset contains the videos and the data derived from them, and identifies the operator only by an internal operator identifier. It does not include your name, email address or contact details. Because hands in a video can sometimes identify a person, and the operator identifier is linked to you in our own records, we treat this data as personal data. A video can also show other people who were in view of the camera (section 8).</li>
+          <li><strong>The Verlet group.</strong> Other companies in the Verlet group may have access where needed to run and support the service.</li>
+          <li><strong>Apple</strong>, for distributing the iOS app and its testing service, under Apple's own terms.</li>
+          <li><strong>Authorities or advisers</strong> where the law requires it or to protect legal rights.</li>
+          <li>A successor, if Verlet is sold or merged, under the protections of this policy.</li>
+        </ul>
+        <p>
+          Verlet is based in Rwanda, and Cloudflare, Grafana and the Verlet group operate in many countries, so data may be stored or
+          processed outside Rwanda. Where we move personal data across borders, we do so in line with the law that applies.
+        </p>
+      </section>
+
+      <section id="tracking">
+        <h2>7. Advertising and tracking</h2>
+        <p>
+          The app contains no advertising and no third-party analytics or tracking libraries. We do not use your data to track you across other
+          companies' apps or websites, and we do not share it with data brokers.
+        </p>
+      </section>
+
+      <section id="others">
+        <h2>8. What recordings may show</h2>
+        <p>
+          Recordings are meant to show an operator's hands doing a task. Operators place the camera as directed for each task and are
+          told not to record their own face, and to wear shoes. Bad camera placement is not allowed.
+        </p>
+        <p>
+          Tasks take place in real settings, so a recording can show other things in view: other people who are nearby, or a reflection in a
+          mirror or a window. When that happens by accident, it is part of the recording and is handled like the rest of it (sections 2, 5 and 6).
+          If you appear in a recording and want to ask about it, contact us (section 14).
+        </p>
+      </section>
+
+      <section id="retention">
+        <h2>9. How long we keep it</h2>
+        <ul>
+          <li><strong>Accounts:</strong> when your work with Verlet ends, we disable your account so it can no longer be used to sign in. We do not currently delete accounts.</li>
+          <li><strong>Recordings and derived data:</strong> we do not currently set an end date for keeping them. Datasets already given to clients stay with those clients.</li>
+          <li><strong>Diagnostic logs:</strong> about a week on your phone, and on our servers only as long as needed to find and fix problems.</li>
+        </ul>
+      </section>
+
+      <section id="security">
+        <h2>10. Security</h2>
+        <p>
+          Data travels between the app and our servers over encrypted connections. Your sign-in token is kept in your phone's secure storage,
+          your password is stored only as a salted, one-way hash, and the app's diagnostic log is designed so that secrets and personal
+          details cannot be written to it. Access to stored recordings is restricted by role to the people and systems that need it. No
+          system is perfectly secure; if a breach affects you, we will tell you as the law requires.
+        </p>
+      </section>
+
+      <section id="rights">
+        <h2>11. Your choices and rights</h2>
+        <p>
+          You can ask us what we hold about you, ask us to correct it, ask for a copy, and ask us to disable your account. Depending on where
+          you live, the law may give you further rights, including a right to have data deleted and a right to complain to a regulator, and we
+          will respect those rights as the law requires. To use any of these, contact us as described in section 14. We may need to confirm who
+          you are first.
+        </p>
+      </section>
+
+      <section id="children">
+        <h2>12. Children</h2>
+        <p>
+          The app is for adults who work with Verlet and is not directed at children. We do not knowingly collect data from children.
+        </p>
+      </section>
+
+      <section id="changes">
+        <h2>13. Changes to this policy</h2>
+        <p>
+          We will update this page when our practices change and change the date at the top. For significant changes, such as sending new
+          kinds of data off your phone, we will tell you in the app or by email before they take effect.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>14. Contact</h2>
+        <p>
+          Questions or requests about your data: <a href="mailto:charlie@verlet.co">charlie@verlet.co</a><br>
+          Verlet Robotics Rwanda LTD, KG 14 Ave, Village Ntora, Cell Ruhango, Sector Gisozi, District Gasabo, Kigali City, Rwanda
+        </p>
+      </section>
+
+    </article>
+  </div>
+
+  <footer class="site">
+    <strong>Verlet Robotics Rwanda LTD</strong>
+    <span>KG 14 Ave, Village Ntora, Cell Ruhango, Sector Gisozi, District Gasabo, Kigali City, Rwanda</span>
+    <span>&copy; 2026 Verlet Robotics. All rights reserved.</span>
+  </footer>
+
+</div>
+</body>
+</html>

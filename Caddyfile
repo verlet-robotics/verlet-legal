@@ -1,0 +1,23 @@
+# Static file server. Railway sets $PORT; locally it falls back to 8080.
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:8080} {
+	root * /srv
+	encode gzip
+
+	header {
+		# The pages use only inline styles and an inline SVG, so nothing else is allowed to load.
+		Content-Security-Policy "default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+		X-Content-Type-Options nosniff
+		Referrer-Policy no-referrer
+		Strict-Transport-Security "max-age=31536000"
+		# Short cache so a policy change shows up within minutes.
+		Cache-Control "public, max-age=300"
+		-Server
+	}
+
+	file_server
+}
