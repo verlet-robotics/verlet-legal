@@ -18,6 +18,13 @@ docker run --rm -p 8080:8080 verlet-legal
 ```
 Then open http://localhost:8080/ego/
 
+`docker build` copies the files into the image, so an image built before an edit still serves the old page. While editing,
+mount the folder instead and just refresh the browser (the server caches for five minutes, so use a hard refresh,
+Ctrl+Shift+R):
+```
+docker run --rm -p 8080:8080 -v "$PWD/public:/srv:ro" -v "$PWD/Caddyfile:/etc/caddy/Caddyfile:ro" caddy:2-alpine
+```
+
 ## Deploy on Railway
 1. New project, Deploy from GitHub repo, pick this repo. Railway finds the `Dockerfile` (see `railway.toml`).
 2. In the service, Settings, Networking: Generate Domain. That gives a public HTTPS address straight away.
@@ -25,6 +32,29 @@ Then open http://localhost:8080/ego/
    target; add it as a CNAME record for `privacy` in the DNS provider (Cloudflare), then wait for the certificate.
    If the record is proxied in Cloudflare and the certificate does not issue, switch it to DNS only.
 4. Open `https://privacy.verlet.co/ego/` in a private window on a phone. It must load with no login.
+
+### Deploying from your computer with the Railway CLI (no GitHub access needed)
+Use this when Railway's GitHub app cannot see the repo.
+
+Install once. On WSL or Linux, a plain `npm i -g` fails with `EACCES` because Node lives in a root-owned folder, so
+install into your own folder instead (no `sudo`):
+```
+npm config set prefix ~/.npm-global
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+npm i -g @railway/cli
+railway --version
+```
+Then, from this folder:
+```
+railway login --browserless              # prints a link and a code; open the link in any browser
+railway init --name verlet-legal         # add --workspace <name> if you belong to more than one
+railway add --service verlet-legal       # an empty service for the code
+railway up --service verlet-legal        # uploads this folder and builds the Dockerfile
+railway domain                           # generates a public *.up.railway.app address
+railway domain privacy.verlet.co         # custom domain; prints the CNAME record to add in DNS
+```
+A CLI deploy is not linked to GitHub, so pushing a change does not redeploy it: run `railway up --service verlet-legal`
+again from this folder after every change. These commands were checked against `railway --help` (CLI 5.71).
 
 The same `public/` folder also deploys unchanged to Cloudflare Pages or any static host.
 

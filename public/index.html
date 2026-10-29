@@ -3,25 +3,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy | Verlet Robotics</title>
+<title>Legal and Privacy | Verlet Robotics</title>
+<meta name="description" content="Privacy policies and legal information for Verlet Robotics products.">
 <style>
-  :root { color-scheme: light dark; --bg:#f4f4f6; --fg:#1c1c1e; --muted:#5f5f66; --line:rgba(0,0,0,.10); --hl:#b53a65; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0a0a0c; --fg:rgba(255,255,255,.92); --muted:rgba(255,255,255,.62); --line:rgba(255,255,255,.10); --hl:#f088ac; } }
-  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  main { max-width: 40rem; margin: 0 auto; padding: 4rem 1.25rem; }
-  h1 { font-family: ui-serif, Georgia, "Times New Roman", serif; font-weight: 500; font-size: 2rem; margin: 0 0 .5rem; }
-  p { color: var(--muted); }
-  ul { list-style: none; padding: 0; margin: 1.5rem 0; border-top: 1px solid var(--line); }
-  li { border-bottom: 1px solid var(--line); }
-  a { display: block; padding: .9rem 0; color: var(--hl); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  :root {
+    color-scheme: light dark;
+    --bg: #f4f4f6; --fg: #1c1c1e; --muted: #5f5f66; --faint: #8e8e93;
+    --card: #ffffff; --line: rgba(0,0,0,.10); --soft: #e8e8ec;
+    --hl: #d64d7a; --hl-text: #b53a65; --hl-soft: rgba(214,77,122,.09);
+    --radius: 8px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0a0c; --fg: rgba(255,255,255,.92); --muted: rgba(255,255,255,.62); --faint: rgba(255,255,255,.45);
+      --card: rgba(22,22,26,.85); --line: rgba(255,255,255,.10); --soft: rgba(255,255,255,.08);
+      --hl: #e06090; --hl-text: #f088ac; --hl-soft: rgba(224,96,144,.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg); min-height: 100vh; position: relative;
+    font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(ellipse at 0% 0%, var(--hl-soft) 0%, transparent 60%);
+  }
+  a { color: var(--hl-text); text-underline-offset: .18em; }
+  a:focus-visible { outline: 2px solid var(--hl); outline-offset: 3px; border-radius: 4px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--card); padding: .6rem 1rem; z-index: 10; border: 1px solid var(--line); }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  header.bar { border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); }
+  .bar-in { max-width: 72rem; margin: 0 auto; padding: .8rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .brand { display: flex; align-items: center; gap: .6rem; color: var(--fg); text-decoration: none; }
+  .brand svg { width: 22px; height: 22px; flex: none; }
+  .brand span { font-family: ui-serif, Georgia, "Times New Roman", serif; font-size: 1.15rem; letter-spacing: .01em; }
+  .bar-doc { color: var(--muted); font-size: .85rem; }
+
+  main { flex: 1; width: 100%; max-width: 72rem; margin: 0 auto; padding: 0 1.25rem 3rem; }
+  .hero { padding: 4rem 0 2.5rem; }
+  .eyebrow { color: var(--hl-text); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 .6rem; }
+  h1 { font-family: ui-serif, Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(2.1rem, 5vw, 3.2rem); line-height: 1.1; margin: 0 0 1rem; letter-spacing: -.01em; }
+  .intro { font-size: 1.12rem; color: var(--muted); max-width: 40rem; margin: 0; }
+
+  h2 { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); font-weight: 600; margin: 0 0 1rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: 1rem; margin-bottom: 3rem; }
+  a.policy {
+    display: flex; flex-direction: column; gap: .5rem; text-decoration: none; color: var(--fg);
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.4rem;
+    transition: border-color .12s ease-out;
+  }
+  a.policy:hover { border-color: var(--hl); }
+  .tag { align-self: flex-start; color: var(--hl-text); background: var(--hl-soft); border-radius: 999px; padding: .1rem .7rem; font-size: .75rem; font-weight: 600; letter-spacing: .04em; }
+  a.policy h3 { font-family: ui-serif, Georgia, "Times New Roman", serif; font-weight: 500; font-size: 1.4rem; line-height: 1.2; margin: .2rem 0 0; }
+  a.policy p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .meta { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; color: var(--faint); font-size: .82rem; margin-top: .4rem; padding-top: .8rem; border-top: 1px solid var(--line); }
+  .go { margin-top: auto; padding-top: .6rem; color: var(--hl-text); font-weight: 600; font-size: .92rem; }
+  a.policy:hover .go { text-decoration: underline; text-underline-offset: .2em; }
+
+  .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem 3rem; margin-bottom: 2rem; }
+  .about h3 { font-size: .95rem; margin: 0 0 .3rem; }
+  .about p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  footer.site { border-top: 1px solid var(--line); }
+  .foot-in { max-width: 72rem; margin: 0 auto; padding: 1.5rem 1.25rem 2rem; color: var(--muted); font-size: .88rem; display: grid; gap: .3rem; }
+  .foot-in strong { color: var(--fg); font-family: ui-serif, Georgia, serif; font-weight: 500; font-size: 1rem; }
+  @media print { header.bar { display: none; } body::before { display: none; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>Verlet Robotics privacy policies</h1>
-  <p>How Verlet handles data in each of its products.</p>
-  <ul><li><a href="/ego/">Verlet Ego (mobile app)</a></li></ul>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="/" aria-label="Verlet Robotics">
+      <svg viewBox="0 0 500 500" aria-hidden="true"><path fill="currentColor" d="M 435.417 92.005 C 439.102 91.548 442.946 91.492 446.623 92.028 C 456.638 93.754 465.69 100.693 469.807 109.999 C 475.136 121.21 473.203 135.184 465.046 144.586 C 457.024 154.063 443.491 158.131 431.672 154.343 C 414.068 180.84 394.204 205.954 373.014 229.678 C 354.432 250.343 334.66 269.899 313.742 288.194 C 303.401 297.507 292.416 306.111 281.567 314.822 C 283.386 322.561 283.273 330.469 279.838 337.786 C 274.963 348.734 263.909 356.338 251.923 356.729 C 244.228 357.046 236.593 354.406 230.612 349.613 C 211.029 361.761 190.62 372.593 169.672 382.192 C 149.558 391.409 129.028 399.065 107.512 404.255 C 95.601 407.025 82.97 409.315 70.726 409.085 C 62.341 409.079 54.062 407.678 46.367 404.334 C 39.354 401.228 33.031 396.467 29.362 389.608 C 24.813 381.578 24.252 372.293 25.48 363.281 C 27.451 349.45 33.987 336.568 41.174 324.738 C 53.615 304.732 69.407 286.658 85.669 269.682 C 97.08 257.868 109.096 246.667 121.416 235.804 C 118.656 229.283 118.603 220.966 120.84 214.261 C 123.395 206.402 129.217 199.747 136.602 196.058 C 148.034 190.409 162.326 191.546 171.977 200.06 C 182.833 209.333 186.162 225.693 179.74 238.529 C 186.586 245.79 193.804 252.708 200.688 259.93 C 212.386 272.172 224.236 284.253 236.032 296.396 C 246.457 291.069 259.755 291.764 269.224 298.717 C 281.051 289.199 292.81 279.628 304.106 269.483 C 329.36 246.914 353.06 222.541 374.652 196.441 C 388.905 179.171 402.461 161.275 414.773 142.566 C 407.684 133.313 406.532 120.225 411.748 109.76 C 416.122 100.437 425.273 93.608 435.417 92.005 Z M 132.94 253.096 C 121.226 263.614 109.528 274.253 98.672 285.654 C 88.315 296.136 78.846 307.508 69.87 319.18 C 61.576 330.425 53.19 342.907 48.429 356.098 C 46.39 362.339 44.449 369.931 46.367 376.373 C 47.633 380.772 51.09 383.811 55.177 385.588 C 62.94 389.009 72.068 388.912 80.4 388.311 C 106.67 385.525 133.167 375.846 157.299 365.299 C 178.535 355.775 199.156 344.827 219.209 333.018 C 217.693 325.603 218.277 317.973 221.468 311.044 C 202.538 291.9 183.819 272.459 165.032 253.17 C 155.487 258.106 143.546 257.169 134.456 251.762 C 133.941 252.204 133.44 252.646 132.94 253.096 Z"/></svg>
+      <span>Verlet Robotics</span>
+    </a>
+    <span class="bar-doc">Legal</span>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <p class="eyebrow">Legal</p>
+    <h1>Legal and privacy</h1>
+    <p class="intro">
+      How Verlet Robotics handles data across its products. Choose a product below to read what it collects, why, who can see it,
+      how long we keep it, and what choices you have.
+    </p>
+  </section>
+
+  <h2>Privacy policies</h2>
+  <div class="grid">
+    <a class="policy" href="/ego/">
+      <span class="tag">Privacy Policy</span>
+      <h3>Verlet Ego</h3>
+      <p>The mobile app our operators use to record, check and upload short videos of everyday tasks.</p>
+      <div class="meta"><span>iOS and Android</span><span>Effective 28 October 2026</span></div>
+      <span class="go">Read the policy &rarr;</span>
+    </a>
+  </div>
+
+  <h2>About this page</h2>
+  <div class="about">
+    <div>
+      <h3>Who publishes it</h3>
+      <p>Verlet Robotics Rwanda LTD<br>KG 14 Ave, Village Ntora, Cell Ruhango, Sector Gisozi, District Gasabo, Kigali City, Rwanda</p>
+    </div>
+    <div>
+      <h3>Questions about your data</h3>
+      <p>Write to <a href="mailto:charlie@verlet.co">charlie@verlet.co</a> and tell us which product you are asking about.</p>
+    </div>
+  </div>
 </main>
+
+<footer class="site">
+  <div class="foot-in">
+    <strong>Verlet Robotics</strong>
+    <span>&copy; 2026 Verlet Robotics. All rights reserved.</span>
+  </div>
+</footer>
 </body>
 </html>
