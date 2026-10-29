@@ -53,8 +53,15 @@ railway up --service verlet-legal        # uploads this folder and builds the Do
 railway domain                           # generates a public *.up.railway.app address
 railway domain privacy.verlet.co         # custom domain; prints the CNAME record to add in DNS
 ```
-A CLI deploy is not linked to GitHub, so pushing a change does not redeploy it: run `railway up --service verlet-legal`
-again from this folder after every change. These commands were checked against `railway --help` (CLI 5.71).
+A CLI deploy is not linked to GitHub, so pushing a change does not redeploy it. After the first setup, deploy every change
+with the script, which does the copy, the safety checks, the upload and the check that the live site matches:
+```
+bash deploy.sh              # deploy
+bash deploy.sh --dry-run    # every check and the copy, but no upload
+bash deploy.sh --verify-only   # only compare https://privacy.verlet.co with this folder
+```
+It copies the folder to your Linux disk first on purpose: uploading straight from a Windows drive (`/mnt/c`) made
+Railway's builder report NUL bytes in plain files. These commands were checked against `railway --help` (CLI 5.71).
 
 The same `public/` folder also deploys unchanged to Cloudflare Pages or any static host.
 
@@ -62,7 +69,8 @@ The same `public/` folder also deploys unchanged to Cloudflare Pages or any stat
 1. Edit the page in `public/<product>/index.html`.
 2. Change "Last updated" at the top of the page, and "Effective" if the change takes effect later.
 3. Add a line to `CHANGELOG.md`: the date, what changed and why, and who approved it.
-4. Open a pull request. Merging to the main branch redeploys.
+4. Open a pull request and merge it.
+5. Deploy with `bash deploy.sh` (merging does not deploy by itself).
 
 ## Adding a policy
 Create `public/<name>/index.html` (copy `public/ego/index.html` as a starting point), then add a link in
